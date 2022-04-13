@@ -1,21 +1,18 @@
-from typing import Any, Callable
+from typing import Any, Callable, Generic, TypeVar
 
 
-class Container(type):
-    def __getitem__(self, _):
-        ...
+T = TypeVar('T')
 
 
-class Optional(metaclass=Container):
-    """Optional is the Container of either None or a value
+class Optional(Generic[T]):
+    """Optional is the Container of either none or just one value
 
-    metaclass=Container is used to make Optional class can be looked like a
-    container
+    by extending Generic[T], we can use other types to denote the inner typep of an Optional
     """
 
-    def __init__(self, value={}):
-        self.__isValid = True
-        self.__value = value
+    def __init__(self, value: T = {}):
+        self.__isValid: bool = True
+        self.__value: T = value
         if value is self.__init__.__defaults__[0]:
             self.__isValid = False
             # print("default value")
@@ -23,10 +20,10 @@ class Optional(metaclass=Container):
             self.__value = value
             # print("setted value", self.value)
 
-    def isValid(self):
+    def isValid(self) -> bool:
         return self.__isValid
 
-    def value(self):
+    def value(self) -> T:
         return self.__value
 
     def __repr__(self) -> str:
