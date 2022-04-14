@@ -52,6 +52,7 @@ def m(e: Either[int, bool]):
     elif e.tag == Either.Tag.Right:
         return 0 if e.value else 1
 
+
 # 7. other injections
 def i1(n: int): return n if n < 0 else n + 2
 def j1(b: bool): return 0 if b else 1
