@@ -8,9 +8,9 @@ def optional_to_either(
     o: Optional[Any]
 ) -> Either[None, Any]:
     if o.isValid():
-        return Right(o.value())
+        return right(o.value())
     else:
-        return Left(None)
+        return left(None)
 
 
 def either_to_optional(
