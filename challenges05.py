@@ -1,10 +1,8 @@
 from enum import Enum
-from typing import *
+from typing import Any, TypeVar, Tuple, Generic
 
 
 # 4. Implement the Either generic type.
-
-
 A = TypeVar('A')
 B = TypeVar('B')
 
